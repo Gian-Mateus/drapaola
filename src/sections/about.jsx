@@ -1,6 +1,6 @@
 export default function about() {
   return (
-    <section className="bg-amber-800 min-h-screen flex p-10 rounded-b-3xl">
+    <section className="bg-amber-800 min-h-screen flex flex-col p-10 rounded-b-3xl">
       {/* Card */}
       <div className="p-4 shadow-xl bg-yellow-50 max-h-[70vh] h-fit rounded-3xl max-w-lg">
         <div>
@@ -24,7 +24,7 @@ export default function about() {
       </div>
 
       {/* Infos */}
-      <div className="p-6 text-amber-100 flex flex-col gap-12">
+      <div className="p-6 text-amber-100 flex flex-col gap-12 mb-10">
         <div>
           <div>
             <h2 className="text-3xl font-bold font-title">
