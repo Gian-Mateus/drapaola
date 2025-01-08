@@ -11,15 +11,16 @@ export default function Header() {
         <h2 className="italic">Dra. Paola Rossigalli</h2>
       </div>
 
-      <button 
-        onClick={() => setIsOpen(!isOpen)} 
+      <button
+        onClick={() => setIsOpen(!isOpen)}
         className="sm:hidden z-20 absolute top-3 right-6"
       >
         <MenuButtonSVG isOpen={isOpen} />
       </button>
 
-      <nav className={`
-        ${isOpen ? 'w-2/3' : 'w-0 sm:w-auto'} 
+      <nav
+        className={`
+        ${isOpen ? "w-2/3" : "w-0 sm:w-auto"} 
         fixed sm:relative
         top-0 right-0 
         h-screen sm:h-auto
@@ -27,26 +28,27 @@ export default function Header() {
         sm:overflow-visible
         sm:mr-6
         flex items-start
-        pt-14 sm:pt-0
+        pt-24 sm:pt-0
         transition-all duration-300 ease-in-out
         bg-amber-900/95 sm:bg-transparent
-      `}>
-        <ul className="flex flex-col sm:flex-row gap-5 justify-end w-full px-4">
-            <a href="/">
-          <li className="relative ease-[cubic-bezier(0.25,0.8,0.25,1)] duration-[400ms] transition-[color] after:content-[''] after:absolute after:w-[0%] after:h-0.5 after:bg-yellow-50 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] after:duration-[400ms] after:transition-[width,left] after:left-2/4 after:-bottom-0.5 focus:after:w-full focus:after:left-[0%] hover:after:w-full hover:after:left-[0%]">
+      `}
+      >
+        <ul className="px-4 text-center mx-auto font-title sm:flex sm:gap-12">
+            <li className="relative ease-[cubic-bezier(0.25,0.8,0.25,1)] duration-[400ms] transition-[color] after:content-[''] after:absolute after:w-[0%] after:h-0.5 after:bg-yellow-50 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] after:duration-[400ms] after:transition-[width,left] after:left-2/4 after:-bottom-0.5 focus:after:w-full focus:after:left-[0%] hover:after:w-full hover:after:left-[0%] mb-6">
+          <a href="/" className="text-2xl sm:text-lg">
               Home
-          </li>
-            </a>
-            <a href="/">
-          <li className="relative ease-[cubic-bezier(0.25,0.8,0.25,1)] duration-[400ms] transition-[color] after:content-[''] after:absolute after:w-[0%] after:h-0.5 after:bg-yellow-50 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] after:duration-[400ms] after:transition-[width,left] after:left-2/4 after:-bottom-0.5 focus:after:w-full focus:after:left-[0%] hover:after:w-full hover:after:left-[0%]">
+          </a>
+            </li>
+            <li className="relative ease-[cubic-bezier(0.25,0.8,0.25,1)] duration-[400ms] transition-[color] after:content-[''] after:absolute after:w-[0%] after:h-0.5 after:bg-yellow-50 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] after:duration-[400ms] after:transition-[width,left] after:left-2/4 after:-bottom-0.5 focus:after:w-full focus:after:left-[0%] hover:after:w-full hover:after:left-[0%] mb-6">
+          <a href="/" className="text-lg sm:text-lg">
               Sobre
-          </li>
-              </a>
-            <a href="/">
-          <li className="relative ease-[cubic-bezier(0.25,0.8,0.25,1)] duration-[400ms] transition-[color] after:content-[''] after:absolute after:w-[0%] after:h-0.5 after:bg-yellow-50 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] after:duration-[400ms] after:transition-[width,left] after:left-2/4 after:-bottom-0.5 focus:after:w-full focus:after:left-[0%] hover:after:w-full hover:after:left-[0%]">
+          </a>
+            </li>
+            <li className="relative ease-[cubic-bezier(0.25,0.8,0.25,1)] duration-[400ms] transition-[color] after:content-[''] after:absolute after:w-[0%] after:h-0.5 after:bg-yellow-50 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] after:duration-[400ms] after:transition-[width,left] after:left-2/4 after:-bottom-0.5 focus:after:w-full focus:after:left-[0%] hover:after:w-full hover:after:left-[0%] mb-6">
+          <a href="/" className="text-2xl sm:text-lg">
               Contato
-          </li>
-              </a>
+          </a>
+            </li>
         </ul>
       </nav>
     </header>
