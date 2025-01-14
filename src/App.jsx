@@ -1,8 +1,7 @@
 import Header from "./sections/header"
 import About from "./sections/about"
 import Harmonization from "./sections/harmonization"
-// import Cases from "./sections/cases"
-import SwipeCards from "./components/swipe-cards"
+import Cases from "./sections/cases";
 function App() {
   return (
     <>
@@ -10,7 +9,7 @@ function App() {
       <main className="font-body">
         <About />
         <Harmonization />
-        <SwipeCards />
+        <Cases />
       </main>
     </>
   );

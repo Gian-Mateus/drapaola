@@ -1,69 +1,87 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useResizeObserver from "../hook/ResizeObserver"; // Importando hook personalizado
 
 export default function SwipeCards() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [activeCardRef, cardSize] = useResizeObserver(); // Usando hook de resize
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+
   const cards = [
     {
       id: 1,
-      title: "Card 1",
-      content: "Lorem ipsum dolor sit amet...",
+      title: "Botox",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ex, maiores nihil expedita magni quaerat aliquid voluptatum explicabo a consequatur repellendus praesentium laudantium nam, molestiae nesciunt cumque aperiam nemo dolorum?",
+      imgPath: "...",
     },
     {
       id: 2,
-      title: "Card 2",
-      content: "Consectetur adipiscing elit...",
+      title: "Botox",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ex, maiores nihil expedita magni quaerat aliquid voluptatum explicabo a consequatur repellendus praesentium laudantium nam, molestiae nesciunt cumque aperiam nemo dolorum?",
+      imgPath: "...",
     },
     {
       id: 3,
-      title: "Card 3",
-      content: "Consectetur adipiscing elit...",
+      title: "Botox",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ex, maiores nihil expedita magni quaerat aliquid voluptatum explicabo a consequatur repellendus praesentium laudantium nam, molestiae nesciunt cumque aperiam nemo dolorum?",
+      imgPath: "...",
     },
     {
       id: 4,
-      title: "Card 4",
-      content: "Consectetur adipiscing elit...",
+      title: "Botox",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ex, maiores nihil expedita magni quaerat aliquid voluptatum explicabo a consequatur repellendus praesentium laudantium nam, molestiae nesciunt cumque aperiam nemo dolorum?",
+      imgPath: "...",
     },
     {
       id: 5,
-      title: "Card 5",
-      content: "Consectetur adipiscing elit...",
+      title: "Botox",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ex, maiores nihil expedita magni quaerat aliquid voluptatum explicabo a consequatur repellendus praesentium laudantium nam, molestiae nesciunt cumque aperiam nemo dolorum?",
+      imgPath: "...",
     },
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup do listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const handleDragEnd = (event, info) => {
-    const swipeThreshold = 50; // quantidade mínima de movimento para trocar card
-    const velocity = info.velocity.x;
+    const swipeThreshold = 50;
     const offset = info.offset.x;
 
-    // Determina a direção do swipe baseado na velocidade e offset
     if (Math.abs(offset) > swipeThreshold) {
       if (offset < 0 && activeCardIndex < cards.length - 1) {
-        // Swipe para esquerda
-        setActiveCardIndex(prev => prev + 1);
+        setActiveCardIndex((prev) => prev + 1);
       } else if (offset > 0 && activeCardIndex > 0) {
-        // Swipe para direita
-        setActiveCardIndex(prev => prev - 1);
+        setActiveCardIndex((prev) => prev - 1);
       }
     }
   };
 
-  const getCardStyle = (index) => {
+  function getCardStyle(index) {
+    // Usa a largura total do viewport para calcular o offset
+    const baseOffset = viewportWidth * 0.05;
     const isAfterActive = index > activeCardIndex;
     const isBeforeActive = index < activeCardIndex;
-    const baseOffset = 16; // espaçamento base entre cards
-    
     let xOffset = 0;
     let scale = 1;
-    
+
     if (isAfterActive) {
-      // Cards após o ativo
       xOffset = (index - activeCardIndex) * baseOffset;
-      scale = 1 - (index - activeCardIndex) * 0.1;
+      scale = 1 - (index - activeCardIndex) * 0.06;
     } else if (isBeforeActive) {
-      // Cards antes do ativo
       xOffset = (index - activeCardIndex) * baseOffset;
-      scale = 1 - (activeCardIndex - index) * 0.1;
+      scale = 1 - (activeCardIndex - index) * 0.06;
     }
 
     return {
@@ -71,17 +89,22 @@ export default function SwipeCards() {
       scale,
       zIndex: cards.length - Math.abs(index - activeCardIndex),
     };
-  };
-
+  }
   return (
-    <div className="relative w-full h-[500px] flex justify-center items-center">
+    <div
+      style={{
+        height: cardSize.height, // Usando altura dinâmica
+      }}
+      className="relative w-full flex justify-center items-center overflow-hidden py-12 mx-4 box-content"
+    >
       {cards.map((card, index) => {
         const style = getCardStyle(index);
 
         return (
           <motion.div
+            ref={index === activeCardIndex ? activeCardRef : null}
             key={card.id}
-            drag={index === activeCardIndex ? 'x' : false}
+            drag={index === activeCardIndex ? "x" : false}
             dragConstraints={{ left: 0, right: 0 }}
             onDragEnd={handleDragEnd}
             initial={false}
@@ -95,10 +118,18 @@ export default function SwipeCards() {
               stiffness: 300,
               damping: 30,
             }}
-            className="absolute w-[200px] h-[300px] bg-white shadow-lg p-4 rounded-lg cursor-grab active:cursor-grabbing"
+            className={`
+              ${activeCardIndex === index ? "active-card" : ""} 
+              absolute max-w-80 sm:max-w-sm md:max-w-md 
+              bg-amber-100 shadow-lg rounded-lg 
+              overflow-hidden flex flex-col
+            `}
           >
-            <h3 className="text-xl font-bold">{card.title}</h3>
-            <p>{card.content}</p>
+            <div className="w-full min-h-72 aspect-ratio-[2/3] bg-zinc-300"></div>
+            <div className="border-t-2 border-t-amber-700 p-4 flex flex-col">
+              <h3 className="text-xl font-bold">{card.title}</h3>
+              <p>{card.content}</p>
+            </div>
           </motion.div>
         );
       })}
