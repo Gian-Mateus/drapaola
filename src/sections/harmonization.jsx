@@ -6,7 +6,7 @@ import { Bioestimulator } from "../assets/bioestimulator";
 export default function Harmonization() {
   return (
     <section className="w-full flex">
-      <div className="mx-12 rounded-[40px] bg-yellow-50 shadow-md p-6 -mt-16 w-full text-amber-950">
+      <div className="mx-12 mb-6 rounded-[40px] bg-yellow-50 shadow-md p-6 -mt-16 w-full text-amber-950">
         <div className="flex flex-col md:flex-row w-full justify-around p-6 md:p-12 items-center">
           {/* Images */}
           <div className="grid grid-cols-2 gap-2">

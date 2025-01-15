@@ -120,8 +120,8 @@ export default function SwipeCards() {
             }}
             className={`
               ${activeCardIndex === index ? "active-card" : ""} 
-              absolute max-w-80 sm:max-w-sm md:max-w-md 
-              bg-amber-100 shadow-lg rounded-lg 
+              absolute w-[60vw] sm:max-w-sm md:max-w-md 
+              bg-amber-50 shadow-lg rounded-lg 
               overflow-hidden flex flex-col
             `}
           >
