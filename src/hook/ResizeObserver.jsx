@@ -5,22 +5,24 @@ const useResizeObserver = () => {
   const elementRef = useRef();
 
   useEffect(() => {
-    const observer = new ResizeObserver(([entry]) => {
-      setSize({
-        width: entry.contentRect.width,
-        height: entry.contentRect.height,
-      });
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        setSize({
+          width: entry.contentRect.width,
+          height: entry.contentRect.height,
+        });
+      }
     });
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    const currentRef = elementRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
       observer.disconnect();
     };
   }, []);
-
   return [elementRef, size];
 };
 

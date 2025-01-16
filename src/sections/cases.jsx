@@ -1,11 +1,15 @@
+import Wave from "../assets/wave";
 import SwipeCards from "../components/swipe-cards";
 
 export default function Cases() {
   return (
-    <section className="flex justify-center w-full bg-amber-200/80 overflow-hidden">
+    <section className="relative flex w-full justify-center overflow-hidden bg-amber-200/80">
+      <div className="absolute -top-2 left-0 z-50">
+        <Wave height="159" width="100%" className="" />
+      </div>
       <div className="my-24">
-        <div className="flex flex-col gap-4 mx-24">
-          <h1 className="text-4xl font-title font-bold">Casos e Depoimentos</h1>
+        <div className="mx-auto flex max-w-2xl flex-col gap-4 text-center">
+          <h1 className="font-title text-4xl font-bold">Casos e Depoimentos</h1>
           <p>
             Alguns casos de antes e depois, demonstrando o quanto a harmonização
             faz diferença na autoestima das pessoas.
