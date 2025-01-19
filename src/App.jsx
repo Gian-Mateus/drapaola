@@ -1,19 +1,18 @@
-import Header from "./sections/header"
-import About from "./sections/about"
-import Harmonization from "./sections/harmonization"
+import { motion } from "motion/react";
+import About from "./sections/about";
+import Harmonization from "./sections/harmonization";
 import Cases from "./sections/cases";
 import Footer from "./sections/footer";
 function App() {
   return (
-    <>
-      <Header />
+    <motion.div>
       <main className="font-body">
         <About />
-        <Harmonization />
-        <Cases />
+        {/* <Harmonization />
+        <Cases /> */}
       </main>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </motion.div>
   );
 }
-export default App
+export default App;

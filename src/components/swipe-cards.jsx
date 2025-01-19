@@ -45,7 +45,7 @@ export default function SwipeCards() {
   return (
     <div
       style={{ height: cardSize.height }}
-      className="relative w-screen flex justify-center items-center overflow-hidden py-12 mx-4 box-content"
+      className="relative w-full flex justify-center items-center overflow-hidden py-12 box-content"
     >
       {cards.map((card, index) => {
         const style = getCardStyle(index);
