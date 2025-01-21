@@ -1,52 +1,63 @@
-import { easeIn, motion } from "motion/react";
+import { motion } from "motion/react";
 import Header from "./header";
 
 export default function About() {
-  const fade = {
-    hidden: {
+  const container = {
+    hiddenContainer: {
       opacity: 0,
       scale: 0.8,
       y: 100,
-      borderRadius: 25
+      borderRadius: 25,
+     // transformPerspective: 2500
     },
-    visible: {
+    visibleContainer: {
       opacity: 1,
       y: 0,
       scale: 1,
       borderRadius: 0,
       transition:{
-        // staggerChildren: 1,
+        staggerChildren: 0.2,
         // when: "beforeChildren",
         duration: 1,
         ease: "easeIn"
       }
     },
+    hiddenCard:{
+      opacity: 0,
+      x: -300
+    },
+    visibleCard:{
+      opacity: 1,
+      x: 0,
+      transition:{
+         duration: 1,
+         ease: "easeInOut"
+      }
+    },
+    hiddenText:{
+      opacity: 0,
+      y: -100
+    },
+    visibleText:{
+      opacity: 1,
+      y: 0
+    }
   };
 
   return (
     <>
       <Header />
       <motion.section
-        variants={fade}
-        initial="hidden"
-        animate="visible"
+        variants={container}
+        initial="hiddenContainer"
+        animate="visibleContainer"
         className="rounded-b-3xl bg-amber-800 p-10 pb-48"
       >
         <div className="mx-auto flex flex-col md:max-w-5xl md:flex-row">
           <motion.article
-            initial={{
-            opacity: 0,
-             x: -300,
-            }}
-            animate={{
-            opacity: 1,
-              x: 0
-            }}
-            transition={{
-              delay: 1,
-              duration: 1,
-              ease: "easeInOut"
-            }}
+            variants={container}
+            initial="hiddenCard"
+            animate="visibleCard"
           className="h-fit max-h-[70vh] max-w-lg rounded-3xl bg-yellow-50 p-4 shadow-xl">
             <img
               className="rounded-3xl object-cover"
@@ -66,7 +77,11 @@ export default function About() {
             </div>
           </motion.article>
 
-          <div className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100">
+          <motion.div 
+          variants={container}
+          initial="hiddenText"
+          animate="visibleText"
+          className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100">
             <section>
               <h2 className="font-title text-3xl font-bold">Quem sou eu?</h2>
               <p>
@@ -85,7 +100,7 @@ export default function About() {
                 assumenda eum nostrum eos doloribus.
               </p>
             </section>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
     </>
