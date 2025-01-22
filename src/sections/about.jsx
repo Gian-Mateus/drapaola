@@ -3,45 +3,48 @@ import Header from "./header";
 
 export default function About() {
   const container = {
-    hiddenContainer: {
-      opacity: 0,
-      scale: 0.8,
-      y: 100,
-      borderRadius: 25,
-     // transformPerspective: 2500
-    },
-    visibleContainer: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      borderRadius: 0,
-      transition:{
-        staggerChildren: 0.2,
-        // when: "beforeChildren",
+    hidden: {},
+    visible: {
+      transition: {
         duration: 1,
-        ease: "easeIn"
-      }
+        ease: "easeIn",
+        staggerChildren: 0.2,
+        delayChildren: 1,
+        when: "beforeChildren",
+      },
     },
-    hiddenCard:{
+  };
+
+  const containerCard = {
+    hidden: {
       opacity: 0,
-      x: -300
+      x: -300,
     },
-    visibleCard:{
+    visible: {
       opacity: 1,
       x: 0,
-      transition:{
-         duration: 1,
-         ease: "easeInOut"
-      }
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
     },
-    hiddenText:{
+  };
+
+  const containerText = {
+    hidden: {
       opacity: 0,
-      y: -100
+      y: 100,
     },
-    visibleText:{
+    visible: {
       opacity: 1,
-      y: 0
-    }
+      y: 0,
+      transition: {
+        type: "spring",
+        duration: 1,
+        ease: "easeInOut",
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   return (
@@ -49,16 +52,15 @@ export default function About() {
       <Header />
       <motion.section
         variants={container}
-        initial="hiddenContainer"
-        animate="visibleContainer"
+        initial="hidden"
+        animate="visible"
         className="rounded-b-3xl bg-amber-800 p-10 pb-48"
       >
         <div className="mx-auto flex flex-col md:max-w-5xl md:flex-row">
           <motion.article
-            variants={container}
-            initial="hiddenCard"
-            animate="visibleCard"
-          className="h-fit max-h-[70vh] max-w-lg rounded-3xl bg-yellow-50 p-4 shadow-xl">
+            variants={containerCard}
+            className="h-fit max-h-[70vh] max-w-lg rounded-3xl bg-yellow-50 p-4 shadow-xl"
+          >
             <img
               className="rounded-3xl object-cover"
               src="/assets/paola-interprete.jpg"
@@ -77,29 +79,30 @@ export default function About() {
             </div>
           </motion.article>
 
-          <motion.div 
-          variants={container}
-          initial="hiddenText"
-          animate="visibleText"
-          className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100">
-            <section>
-              <h2 className="font-title text-3xl font-bold">Quem sou eu?</h2>
-              <p>
+          <motion.div
+            variants={containerText}
+            className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100"
+          >
+            <motion.section>
+              <motion.h2 className="font-title text-3xl font-bold">
+                Quem sou eu?
+              </motion.h2>
+              <motion.p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
                 possimus, veniam consequatur quam qui odit deserunt saepe natus
                 optio ut eligendi voluptatem, sapiente distinctio asperiores
                 assumenda eum nostrum eos doloribus.
-              </p>
-            </section>
-            <section>
-              <h2 className="font-title text-3xl font-bold">Formação</h2>
-              <p>
+              </motion.p>
+            </motion.section>
+            <motion.section>
+              <motion.h2 className="font-title text-3xl font-bold">Formação</motion.h2>
+              <motion.p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
                 possimus, veniam consequatur quam qui odit deserunt saepe natus
                 optio ut eligendi voluptatem, sapiente distinctio asperiores
                 assumenda eum nostrum eos doloribus.
-              </p>
-            </section>
+              </motion.p>
+            </motion.section>
           </motion.div>
         </div>
       </motion.section>
