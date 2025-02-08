@@ -4,7 +4,7 @@ import Harmonization from "./sections/harmonization";
 import Cases from "./sections/cases";
 import Footer from "./sections/footer";
 
-const { scrollY, scrollProgress } = useScroll()
+// const { scrollY, scrollProgress } = useScroll()
 function App() {
   return (
     <motion.div>

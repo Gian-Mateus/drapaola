@@ -8,34 +8,34 @@ export default function Harmonization() {
     {
       Component: MouthFill,
       title: "Preenchimento Labial",
-      description: "Lorem ipsum dolor sit amet enim consectetur.",
+      description: "O preenchimento labial aumenta o volume e melhora a simetrias, proporcionando lábios bonitos e harmoniosos.",
     },
     {
       Component: Botox,
       title: "Botox",
-      description: "Lorem ipsum dolor sit amet enim consectetur.",
+      description: "A toxina botulínica ajuda a atenuar linhas de expressão e rugas mais profundas",
     },
     {
       Component: Chin,
       title: "Lipo de Papada",
-      description: "Lorem ipsum dolor sit amet enim consectetur.",
+      description: "A lipoaspiração de papada é um procedimento estético que elimina a gordura acumulada na região abaixo do queixo, resultando em um contorno facial mais definido e equilibrado.",
     },
     {
       Component: Filler,
       title: "Preenchimento com Ácido Hialurônico",
-      description: "Lorem ipsum dolor sit amet enim consectetur.",
+      description: "O preenchimento com ácido hialurônico é um dos tratamentos estéticos mais populares para suavizar rugas, restaurar volume e melhorar a aparência da pele de forma harmoniosa e rejuvenescida.",
     },
     {
       Component: Bioestimulator,
       title: "Bioestimulador",
-      description: "Lorem ipsum dolor sit amet enim consectetur.",
+      description: "Os bioestimuladores de colágeno estimulam a produção de colágeno, melhorando a textura e firmeza da pele.",
     },
   ];
   return (
     <section className="flex w-full">
       <div className="mx-12 -mt-16 mb-6 w-full rounded-[40px] bg-yellow-50 p-6 text-amber-950 shadow-md">
         <div className="flex w-full flex-col items-center justify-around p-6 md:p-12 lg:flex-row">
-          <div className="mb-6 grid grid-cols-2 gap-2">
+          <div className="mb-6 grid grid-cols-2 gap-2 max-w-md">
             {[
               "/assets/botox.jpg",
               "/assets/botox-ap.jpg",
@@ -54,7 +54,7 @@ export default function Harmonization() {
                       : index === 2
                         ? "rounded-b-full rounded-tl-full"
                         : "rounded-b-full rounded-tr-full"
-                } w-48 object-cover ${index < 2 ? "self-end" : "self-start"}`}
+                } object-cover ${index < 2 ? "self-end" : "self-start"}`}
               />
             ))}
           </div>
@@ -64,8 +64,7 @@ export default function Harmonization() {
               Harmonização Facial, você se sentindo melhor consigo mesma.
             </h1>
             <p className="mt-4 text-amber-900">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
-              eiusmod tempor dolore magna aliqua inventore veritatis et quasi.
+              Procedimentos que podem ser realizados com a Harmonização facial para melhorar a sua autoestima e bem-estar.
             </p>
 
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">

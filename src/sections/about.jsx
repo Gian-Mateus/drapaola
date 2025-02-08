@@ -8,9 +8,7 @@ export default function About() {
       transition: {
         duration: 1,
         ease: "easeIn",
-        staggerChildren: 0.2,
         delayChildren: 1,
-        when: "beforeChildren",
       },
     },
   };
@@ -56,7 +54,7 @@ export default function About() {
         animate="visible"
         className="rounded-b-3xl bg-amber-800 p-10 pb-48"
       >
-        <div className="mx-auto flex flex-col md:max-w-5xl md:flex-row">
+        <div className="mx-auto flex flex-col md:max-w-5xl md:flex-row items-center gap-3">
           <motion.article
             variants={containerCard}
             className="h-fit max-h-[70vh] max-w-lg rounded-3xl bg-yellow-50 p-4 shadow-xl"
@@ -71,10 +69,10 @@ export default function About() {
                 Dra. Paola Rossigalli
               </h3>
               <p className="text-amber-900">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem
-                eaque similique dolor et voluptatibus dicta perspiciatis quis
-                fugit est libero voluptatem quidem saepe voluptate, asperiores
-                nesciunt sed animi illo doloremque?
+                Sou a Dra. Paola Rossigalli, dentista especializada em
+                Harmonização Facial. Sempre encantada pela estética e pela
+                capacidade que ela tem de transformar não só a aparência, mas
+                também a autoestima das pessoas.
               </p>
             </div>
           </motion.article>
@@ -88,20 +86,39 @@ export default function About() {
                 Quem sou eu?
               </motion.h2>
               <motion.p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-                possimus, veniam consequatur quam qui odit deserunt saepe natus
-                optio ut eligendi voluptatem, sapiente distinctio asperiores
-                assumenda eum nostrum eos doloribus.
+                Sou especialista em Harmonização Facial, e meu compromisso é
+                oferecer um atendimento humanizado e acolhedor. Minha maior
+                prioridade é entender suas necessidades e expectativas,
+                proporcionando soluções personalizadas para realçar sua beleza
+                natural com segurança e equilíbrio. Com uma abordagem cuidadosa
+                e detalhista, busco garantir seu conforto e confiança em cada
+                procedimento, tornando sua experiência única e transformadora.
               </motion.p>
             </motion.section>
             <motion.section>
-              <motion.h2 className="font-title text-3xl font-bold">Formação</motion.h2>
-              <motion.p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-                possimus, veniam consequatur quam qui odit deserunt saepe natus
-                optio ut eligendi voluptatem, sapiente distinctio asperiores
-                assumenda eum nostrum eos doloribus.
-              </motion.p>
+              <motion.h2 className="font-title text-3xl font-bold">
+                Formação
+              </motion.h2>
+              <motion.div>
+                Meu compromisso com a excelência se reflete
+                nos cursos e treinamentos práticos que realizei, garantindo
+                atualização constante e domínio das técnicas mais avançadas.
+                <motion.ul className="indent-4 list-disc list-inside">
+                  <motion.li>Especialização em Harmonização Facial</motion.li>
+                </motion.ul>
+                <motion.ul className="indent-4 list-disc list-inside">
+                  <motion.li>
+                    Curso Intensivo Prático em Harmonização (Toxina Botulínica,
+                    Preenchimento, Bioestimuladores)
+                  </motion.li>
+                </motion.ul>
+                <motion.ul className="indent-4 list-disc list-inside">
+                  <motion.li>Cursos de Imersão em Facetas e Resina</motion.li>
+                </motion.ul>
+                Com os anos de experiência, já tive a oportunidade de
+                transformar a autoestima de diversos pacientes, sempre com
+                atenção aos detalhes e utilizando materiais premium.
+              </motion.div>
             </motion.section>
           </motion.div>
         </div>
