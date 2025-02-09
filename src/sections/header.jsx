@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { MenuButtonSVG } from "../ui/menu-button";
 import { Logo } from "../assets/logo";
+import { Name } from "../assets/name";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +58,7 @@ export default function Header() {
         },
       },
     },
-    navItem: {
+    navHover: {
       rest: { width: "0%" },
       hover: { width: "100%" },
     },
@@ -79,18 +80,19 @@ export default function Header() {
       variants={animations.header}
       initial="hidden"
       animate="visible"
-      className="relative flex items-center justify-between bg-amber-800 px-4 font-title text-yellow-50 lg:px-40"
+      className="sticky top-0 left-0 right-0 flex items-center justify-between bg-amber-800 px-4 font-title text-yellow-50 lg:px-40"
     >
       {/* Logo */}
-      <motion.div variants={animations.logo} className="ml-4 min-w-[50%] p-4">
-        <Logo width="8rem" height="auto" className="fill-yellow-50"/>
+      <motion.div variants={animations.logo} className="min-w-[50%] py-4 -ml-2 md:p-4 flex items-center gap-3">
+        <Logo width={isMobile ? "4rem" : "8rem"} height="auto" className="fill-yellow-50"/>
+        <Name width="12rem" height="auto" className="fill-yellow-50"/>
       </motion.div>
 
       {/* Mobile Menu Toggle */}
       {isMobile && (
         <motion.button
           onClick={toggleMenu}
-          className="absolute right-6 top-3 z-30"
+          className="z-50"
           whileTap={{ scale: 0.9 }}
         >
           <MenuButtonSVG isOpen={isOpen} />
@@ -108,7 +110,7 @@ export default function Header() {
             exit="hidden"
             className={` ${
               isMobile
-                ? "fixed right-0 top-0 h-screen w-2/3 bg-amber-900/95 pt-24"
+                ? "fixed right-0 top-0 h-screen w-2/3 bg-amber-900 pt-24"
                 : "relative mr-6 w-auto"
             } z-20 overflow-hidden`}
           >

@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import Header from "./header";
 
 export default function About() {
   const container = {
@@ -47,7 +46,7 @@ export default function About() {
 
   return (
     <>
-      <Header />
+      
       <motion.section
         variants={container}
         initial="hidden"
@@ -79,7 +78,7 @@ export default function About() {
 
           <motion.div
             variants={containerText}
-            className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100"
+            className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100 font-light"
           >
             <motion.section>
               <motion.h2 className="font-title text-3xl font-bold">
@@ -103,16 +102,16 @@ export default function About() {
                 Meu compromisso com a excelência se reflete
                 nos cursos e treinamentos práticos que realizei, garantindo
                 atualização constante e domínio das técnicas mais avançadas.
-                <motion.ul className="indent-4 list-disc list-inside">
+                <motion.ul className="indent-4 list-disc list-inside italic font-bold">
                   <motion.li>Especialização em Harmonização Facial</motion.li>
                 </motion.ul>
-                <motion.ul className="indent-4 list-disc list-inside">
+                <motion.ul className="indent-4 list-disc list-inside italic font-bold">
                   <motion.li>
                     Curso Intensivo Prático em Harmonização (Toxina Botulínica,
                     Preenchimento, Bioestimuladores)
                   </motion.li>
                 </motion.ul>
-                <motion.ul className="indent-4 list-disc list-inside">
+                <motion.ul className="indent-4 list-disc list-inside italic font-bold">
                   <motion.li>Cursos de Imersão em Facetas e Resina</motion.li>
                 </motion.ul>
                 Com os anos de experiência, já tive a oportunidade de
