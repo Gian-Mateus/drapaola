@@ -18,7 +18,6 @@ export default function Cases({props}) {
             faz diferença na autoestima das pessoas.
           </motion.p>
         </motion.div>
-          {/* Cards */}
           <SwipeCards />
       </motion.div>
     </motion.section>

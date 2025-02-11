@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { MenuButtonSVG } from "../ui/menu-button";
-import { Logo } from "../assets/logo";
-import { Name } from "../assets/name";
+import { Brand } from "../components/brand";
+import { Navlinks } from "../components/navlinks";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,13 +82,8 @@ export default function Header() {
       animate="visible"
       className="sticky top-0 left-0 right-0 flex items-center justify-between bg-amber-800 px-4 font-title text-yellow-50 lg:px-40"
     >
-      {/* Logo */}
-      <motion.div variants={animations.logo} className="min-w-[50%] py-4 -ml-2 md:p-4 flex items-center gap-3">
-        <Logo width={isMobile ? "4rem" : "8rem"} height="auto" className="fill-yellow-50"/>
-        <Name width="12rem" height="auto" className="fill-yellow-50"/>
-      </motion.div>
+      <Brand animations={animations} isMobile={isMobile} />
 
-      {/* Mobile Menu Toggle */}
       {isMobile && (
         <motion.button
           onClick={toggleMenu}
@@ -99,7 +94,6 @@ export default function Header() {
         </motion.button>
       )}
 
-      {/* Navigation */}
       <AnimatePresence>
         {(isOpen || !isMobile) && (
           <motion.nav
@@ -114,40 +108,7 @@ export default function Header() {
                 : "relative mr-6 w-auto"
             } z-20 overflow-hidden`}
           >
-            <motion.ul
-              variants={animations.header}
-              className="mx-auto px-4 text-center font-title sm:flex sm:gap-12"
-            >
-              {["Home", "Sobre", "Contato"].map((item, index) => (
-                <motion.li
-                  key={item}
-                  variants={animations.navItem}
-                  className="relative mb-6 sm:mb-0"
-                >
-                  <motion.a
-                    href={`#${item.toLowerCase()}`}
-                    className="relative text-2xl sm:text-lg"
-                    initial="rest"
-                    whileHover="hover"
-                    animate="rest"
-                  >
-                    {item}
-                    <motion.div
-                      className="absolute -bottom-0.5 left-1/2 h-1 rounded-full bg-yellow-50"
-                      style={{ transform: "translateX(-50%)", width: "0%" }}
-                      variants={{
-                        rest: { width: "0%" },
-                        hover: { width: "100%" },
-                      }}
-                      transition={{
-                        duration: 0.3,
-                        ease: "easeInOut",
-                      }}
-                    />
-                  </motion.a>
-                </motion.li>
-              ))}
-            </motion.ul>
+            <Navlinks animations={animations} />
           </motion.nav>
         )}
       </AnimatePresence>
