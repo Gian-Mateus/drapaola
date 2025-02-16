@@ -10,7 +10,7 @@ export default function FooterNewsletter() {
         <input
           type="email"
           placeholder="Seu email"
-          className="rounded-full px-4 py-2 text-amber-950 focus:outline-none"
+          className="rounded-full px-4 py-2 text-amber-950 focus:outline-hidden"
         />
         <button
           type="submit"
