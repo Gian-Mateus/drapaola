@@ -1,34 +1,21 @@
 import { motion } from "motion/react"
 
 const links = [
-  {
-    name: "Home",
-    href: "#home",
-    key: 1
-  },
-  {
-    name: "Sobre",
-    href: "#sobre",
-    key: 2
-  },
-  {
-    name: "Contato",
-    href: "#contato",
-    key: 3
-  }
+  { name: "Home", href: "#home", key: 1 },
+  { name: "Sobre", href: "#sobre", key: 2 },
+  { name: "Contato", href: "#contato", key: 3 }
 ]
 
-export const Navlinks = ({props, animations}) => {
+export const Navlinks = ({ props, variants }) => {
   return (
     <motion.ul
-      variants={animations.header}
       className="mx-auto px-4 text-center font-title sm:flex sm:gap-12"
       {...props}
     >
       {links.map((e) => (
         <motion.li
           key={e.key}
-          variants={animations.navItem}
+          variants={variants?.navItem}
           className="relative mb-6 sm:mb-0"
         >
           <motion.a
@@ -47,11 +34,11 @@ export const Navlinks = ({props, animations}) => {
               }}
               variants={{
                 rest: { width: "0%" },
-                hover: { width: "100%" },
+                hover: { width: "100%" }
               }}
               transition={{
                 duration: 0.3,
-                ease: "easeInOut",
+                ease: "easeInOut"
               }}
             />
           </motion.a>

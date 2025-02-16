@@ -1,6 +1,6 @@
-import Wave from "../assets/wave";
-import SwipeCards from "../components/swipe-cards";
 import { motion } from "motion/react";
+import Wave from "../assets/wave";
+import SwipeCards from "../components/Swipe-cards";
 
 export default function Cases({props}) {
   return (

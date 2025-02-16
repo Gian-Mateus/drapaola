@@ -5,6 +5,7 @@ export const TextAbout = ({ props, animation }) => {
         <motion.div
             variants={animation}
             className="mb-10 flex min-w-72 flex-col gap-12 p-6 text-amber-100 font-light"
+            {...props}
         >
             <motion.section>
                 <motion.h2 className="font-title text-3xl font-bold">

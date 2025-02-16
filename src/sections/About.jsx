@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { Card } from "../components/card";
-import { TextAbout } from "../components/text-about";
+import { Card } from "../components/Card";
+import { TextAbout } from "../components/Text-about";
 
 export default function About() {
   const container = {
