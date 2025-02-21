@@ -1,12 +1,26 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuButtonSVG } from "../ui/menu-button";
 import { Brand } from "./Brand";
 import { Navlinks } from "./Navlinks";
 import { Nav } from "./Nav";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(true)
+      } else {
+        setIsOpen(false)
+      }
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  const toggleSidebar = () => setIsOpen(!isOpen)
 
   const animations = {
     header: {
@@ -30,35 +44,6 @@ export default function Header() {
         },
       },
     },
-    navToggle: {
-      hidden: {
-        x: "100%",
-        opacity: 0,
-      },
-      visible: {
-        x: 0,
-        opacity: 1,
-        transition: {
-          type: "tween",
-          duration: 0.3,
-        },
-      },
-    },
-    navHover: {
-      rest: { width: "0%" },
-      hover: { width: "100%" },
-    },
-    navItem: {
-      hidden: { opacity: 0, x: 50 },
-      visible: {
-        opacity: 1,
-        x: 0,
-        transition: {
-          duration: 0.3,
-          ease: "easeOut",
-        },
-      },
-    },
   };
 
   return (
@@ -71,15 +56,15 @@ export default function Header() {
       <Brand variants={animations.logo} />
 
       <motion.button
-        onClick={() => setIsOpen(prev => !prev)}
-        className="z-50"
+        onClick={toggleSidebar}
+        className="z-50 md:hidden"
         whileTap={{ scale: 0.9 }}
       >
         <MenuButtonSVG isOpen={isOpen} />
       </motion.button>
 
-      <Nav variants={animations.navToggle}>
-        <Navlinks variants={animations.navHover} />
+      <Nav isOpen={isOpen}>
+        <Navlinks />
       </Nav>
     </motion.header>
   );
