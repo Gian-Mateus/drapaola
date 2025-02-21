@@ -6,7 +6,7 @@ const links = [
   { name: "Contato", href: "#contato", key: 3 }
 ]
 
-const navItem = {
+const navLink = {
   hidden: { opacity: 0, x: 50 },
   visible: {
     opacity: 1,
@@ -14,20 +14,22 @@ const navItem = {
     transition: {
       duration: 0.3,
       ease: "easeOut",
+      staggerChildren: 0.3
     },
   },
 }
+
 
 export const Navlinks = ({ props }) => {
   return (
     <motion.ul
       className="mx-auto px-4 text-center font-title flex flex-col gap-14 md:flex-row"
       {...props}
+      variants={navLink}
     >
       {links.map((e) => (
         <motion.li
           key={e.key}
-          variants={navItem}
           className="relative mb-6 sm:mb-0"
         >
           <motion.a
