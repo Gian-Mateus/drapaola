@@ -10,14 +10,14 @@ export default function Footer() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex w-full flex-col bg-amber-950 px-12 pt-12 pb-12 text-yellow-50 gap-8"
+      className="flex w-full flex-col gap-8 bg-amber-950 px-12 pt-12 pb-12 text-yellow-50"
     >
       <FooterSocial />
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mx-auto flex flex-col md:flex-row gap-8 justify-between w-full border-t border-yellow-50 pt-6"
+        className="mx-auto flex w-full flex-col justify-between gap-8 border-t border-yellow-50 pt-6 md:flex-row"
       >
         <FooterLinks />
         <FooterNewsletter />

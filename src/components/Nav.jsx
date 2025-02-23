@@ -1,11 +1,20 @@
-import React from "react";
-import { AnimatePresence, motion } from "motion/react";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const Nav = ({ props, children, isOpen }) => {
-  const navVariants = {
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHasEntered(true);
+    }, 1000); // Tempo da animação inicial
+    return () => clearTimeout(timer);
+  }, []);
+
+  const initialAnimation = {
     initial: {
       opacity: 0,
-      x: "100%"
+      x: "100%",
     },
     animate: {
       opacity: 1,
@@ -13,23 +22,21 @@ export const Nav = ({ props, children, isOpen }) => {
       transition: {
         duration: 1,
         ease: "easeOut",
-      }
+      },
     },
-    exit: {
-      opacity: 0,
-      x: "100%",
-      transition: {
-        duration: 0.2,
-        ease: "easeIn"
-      }
-    }
+  };
+
+  const sidebarAnimation = {
+    initial: { opacity: 0, x: "100%" },
+    animate: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } },
+    exit: { opacity: 0, x: "100%", transition: { duration: 0.2, ease: "easeIn" } },
   };
 
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
         <motion.nav
-          variants={navVariants}
+          variants={hasEntered ? sidebarAnimation : initialAnimation}
           initial="initial"
           animate="animate"
           exit="exit"

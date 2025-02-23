@@ -11,16 +11,16 @@ export default function Header() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setIsOpen(true)
+        setIsOpen(true);
       } else {
-        setIsOpen(false)
+        setIsOpen(false);
       }
-    }
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const toggleSidebar = () => setIsOpen(!isOpen)
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   const animations = {
     header: {
@@ -51,13 +51,13 @@ export default function Header() {
       variants={animations.header}
       initial="hidden"
       animate="visible"
-      className="sticky top-0 left-0 right-0 flex items-center justify-between bg-amber-800 px-4 font-title text-yellow-50 lg:px-40"
+      className="font-title sticky top-0 right-0 left-0 z-100 flex items-center justify-between bg-amber-800 px-4 text-yellow-50 lg:px-40"
     >
       <Brand variants={animations.logo} />
 
       <motion.button
         onClick={toggleSidebar}
-        className="z-50 md:hidden"
+        className="z-100 md:hidden"
         whileTap={{ scale: 0.9 }}
       >
         <MenuButtonSVG isOpen={isOpen} />

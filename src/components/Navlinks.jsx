@@ -41,7 +41,7 @@ export const Navlinks = ({ props }) => {
           >
             {e.name}
             <motion.div
-              className="absolute -bottom-0.5 left-1/2 h-1 rounded-full bg-yellow-50"
+              className="absolute -bottom-1 left-1/2 h-1 rounded-full bg-yellow-50"
               style={{
                 transform: "translateX(-50%)",
                 width: "0%"
